@@ -47,33 +47,35 @@ import dev.alejo.fastui.ui.theme.ChatTabsBackground
 @Composable
 fun Chat() {
     Scaffold(
-        topBar = { ChatTopBar(Modifier.fillMaxWidth()) },
-        bottomBar = {
-            TextInput(
-                Modifier
-                    .fillMaxWidth()
-                    .height(80.dp)
-            )
-        },
-        containerColor = ChatPurple
+        topBar = { ChatTopBar(Modifier.fillMaxWidth()) }
     ) { innerPadding ->
         Column(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(innerPadding)
+                .background(
+                    brush = Brush.horizontalGradient(
+                        0f to ChatPurple,
+                        0.8f to ChatPurple,
+                        0.8f to Color.White,
+                        1f to Color.White
+                    )
+                )
                 .background(ChatPurple, RoundedCornerShape(topEnd = 32.dp))
         ) {
             val messages = MessageProvider.getMessages()
             LazyColumn(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(horizontal = 16.dp),
+                    .padding(horizontal = 16.dp)
+                    .weight(1f),
                 reverseLayout = true
             ) {
                 items(messages.size) { index ->
                     MessageItem(message = messages[index])
                 }
             }
+            TextInput(Modifier.fillMaxWidth().height(80.dp))
         }
     }
 }
@@ -184,9 +186,8 @@ fun TextInput(modifier: Modifier = Modifier) {
 @Composable
 fun ChatTopBar(modifier: Modifier = Modifier) {
     Row(
-        modifier = Modifier
+        modifier = modifier
             .height(80.dp)
-            .fillMaxWidth()
             .background(
                 brush = Brush.verticalGradient(
                     0f to Color.White,
