@@ -86,8 +86,10 @@ fun MessageItem(message: Message) {
         when (message.messageType) {
             is MessageType.File -> {
                 Row(
-                    modifier = message.sender.getSenderShape(),
-                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    modifier = message.sender.getSenderShape().padding(
+                        start = 16.dp, end = 6.dp, top = 6.dp, bottom = 6.dp
+                    ),
+                    horizontalArrangement = Arrangement.spacedBy(16.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Icon(
@@ -96,7 +98,7 @@ fun MessageItem(message: Message) {
                         tint = Color.White
                     )
                     Column {
-                        Text(message.messageType.fileName, color = Color.White, fontSize = 18.sp)
+                        Text(message.messageType.fileName, color = Color.White)
                         Text(message.messageType.size, color = Color.White.copy(alpha = 0.6f))
                     }
                     IconButton(
@@ -116,6 +118,7 @@ fun MessageItem(message: Message) {
                 Box(
                     modifier = message.sender
                         .getSenderShape()
+                        .padding(16.dp)
                         .align(
                             if (message.sender is Sender.User) Alignment.CenterEnd else Alignment.CenterStart
                         )

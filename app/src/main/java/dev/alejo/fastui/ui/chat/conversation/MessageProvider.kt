@@ -89,7 +89,6 @@ sealed class Sender {
                             bottomEnd = 25.dp
                         )
                     )
-                    .padding(16.dp)
             }
 
             is Friend -> {
@@ -104,7 +103,6 @@ sealed class Sender {
                             bottomEnd = 25.dp
                         )
                     )
-                    .padding(vertical = 16.dp, horizontal = 16.dp)
             }
         }
     }
