@@ -10,7 +10,7 @@ import androidx.compose.ui.unit.dp
 import dev.alejo.fastui.ui.theme.ChatPurpleLight
 import java.sql.Timestamp
 
-object MessageProvider {
+object Provider {
 
     private val messages = listOf<Message>(
         Message(
